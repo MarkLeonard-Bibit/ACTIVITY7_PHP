@@ -3,12 +3,12 @@ session_start();
     $email = (isset($_POST['email'])) ? $_POST['email'] : "";
     $password = (isset($_POST['password'])) ? $_POST['password'] : "";
     $message = "";
-    if($email == "rabe.arabella@mscmarinduque.edu.ph" && $password == "belle"){
+    if($email == "bibit.markleonard@mscmarinduque.edu.ph" && $password == "mark"){
         $_SESSION['email'] = $email;
         $_SESSION['password'] = $password;
         $message = "<div class='alert alert-success'>Login Successfull</div>";
         echo "<script>window.location.href='./pages/dashboard.php';</script>";
-        //echo "<script>alert('Login Successful!');</script>";
+        //echo "<script>alert('Login Successsful!');</script>";
     }elseif($email == "" && $password == ""){
         $message = "<div class='alert alert-danger'>Please enter your email and password</div>";
     }else{
