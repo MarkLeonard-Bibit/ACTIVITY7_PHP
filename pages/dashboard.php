@@ -1,9 +1,9 @@
 <?php
-session_start();
-if(!isset($_SESSION['email']) || !isset($_SESSION['password'])){
-    header('location:../index.php');
-    exit();
-}
+    session_start();
+    if(!isset($_SESSION['email']) || !isset($_SESSION['password'])){
+        header('location:../');
+        exit();
+    }
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -14,21 +14,21 @@ if(!isset($_SESSION['email']) || !isset($_SESSION['password'])){
         <meta name="description" content="" />
         <meta name="author" content="" />
         <title>Dashboard</title>
-        <?php include('../layout/style.php');?>
+        <?php include('../layout/style.php')?>
+
     </head>
     <body class="sb-nav-fixed">
-
-        <?php include('../layout/header.php');?>
+        <?php include('../layout/header.php')?>
 
         <div id="layoutSidenav">
-            <?php include('../layout/navigation.php');?>
-
+           <?php include('../layout/navigation.php')?>
             <div id="layoutSidenav_content">
                 <main>
                     <div class="container-fluid px-4">
                         <h1 class="mt-4">Dashboard</h1>
                         <ol class="breadcrumb mb-4">
-                            <li class="breadcrumb-item active">Dashboard</li>
+                            <li class="breadcrumb-item active">Email: <?php echo $_SESSION['email']; ?></li>
+                            <li class="breadcrumb-item active">Password: <?php echo $_SESSION['password']; ?></li>
                         </ol>
                         <div class="row">
                             <div class="col-xl-3 col-md-6">
@@ -78,7 +78,16 @@ if(!isset($_SESSION['email']) || !isset($_SESSION['password'])){
                                     <div class="card-body"><canvas id="myAreaChart" width="100%" height="40"></canvas></div>
                                 </div>
                             </div>
-                         
+                            <div class="col-xl-6">
+                                <div class="card mb-4">
+                                    <div class="card-header">
+                                        <i class="fas fa-chart-bar me-1"></i>
+                                        Bar Chart Example
+                                    </div>
+                                    <div class="card-body"><canvas id="myBarChart" width="100%" height="40"></canvas></div>
+                                </div>
+                            </div>
+                        </div>
                         <div class="card mb-4">
                             <div class="card-header">
                                 <i class="fas fa-table me-1"></i>
@@ -115,16 +124,15 @@ if(!isset($_SESSION['email']) || !isset($_SESSION['password'])){
                                             <td>2011/04/25</td>
                                             <td>$320,800</td>
                                         </tr>
-                                        
                                     </tbody>
                                 </table>
                             </div>
                         </div>
                     </div>
                 </main>
-                <?php include('../layout/footer.php');?>
+              <?php include('../layout/footer.php')?>
             </div>
         </div>
-        <?php include('../layout/script.php');?>
+        <?php include('../layout/script.php')?>
     </body>
 </html>

@@ -1,17 +1,19 @@
-<?php
+<?php 
 session_start();
-if(!isset($_SESSION['email']) || !isset($_SESSION['password'])){
-    header('location:../index.php');
-    exit();
-}
-if (isset($_POST['submit'])) {
-    // Capture form data and store it in session variables
-    $_SESSION['name'] = htmlspecialchars($_POST['name']);
-    $_SESSION['age'] = htmlspecialchars($_POST['age']);
-    $_SESSION['gender'] = htmlspecialchars($_POST['gender']);
-    
-    // Redirect to show_details.php to display the submitted information
-    header('location: show_details.php');
+
+if ($_SERVER["REQUEST_METHOD"] == "POST") {
+    // Collect the form data
+    $student = [
+        "name" => $_POST["name"],
+        "age" => $_POST["age"],
+        "gender" => $_POST["gender"]
+    ];
+
+    // Store student data in the session
+    $_SESSION['students'][] = $student;
+
+    // Redirect to showData.php to display the stored data
+    header("Location: show_data.php");
     exit();
 }
 ?>
@@ -122,7 +124,7 @@ if (isset($_POST['submit'])) {
                                     <button type="reset">Clear</button>
                                 </form>
                                 <br>
-                                <a href="show_details.php">View Details</a>
+                                <a href="show_data.php">View Details</a>
                             </div> 
                     </div>
                 </main>
